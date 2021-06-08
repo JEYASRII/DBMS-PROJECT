@@ -7,7 +7,8 @@ if(isset($_POST["checkout"])){
     while($row = mysqli_fetch_array($result)){
       $flag=0;
     
-      $price=$row["quantity"]*$row["pro_price"];
+      $med=($row['quantity']*$row['pro_price']);
+      $price=$med+(0.1*$med)+50;
       $id=$row["pro_id"];
       $image=$row["pro_image"];
       $quantity=$row["quantity"];
@@ -120,6 +121,8 @@ if ($_SESSION["order_count"]==0)
                                                 <br>
                                                 <h5 class="font-baloo font-size-20">Quantity</h5>
                                                 <medium><?php echo $order_res["quantity"];?></medium>
+                                                <h5 class="font-baloo font-size-20">Delivery</h5>
+                                                <medium class="font-size-15 font-baloo">INR.50</medium>
                                                         </div>
                                                        
                                                     </div>
@@ -131,6 +134,8 @@ if ($_SESSION["order_count"]==0)
                                             <h5 class="font-baloo font-size-20">Order Status</h5>
                                                 <medium><?php echo $order_res["status"];?></medium>
                                                 <br>
+                                                
+                                                
                                                 <div class="font-size-20 text-danger font-baloo">
                                                     INR <span class="product_price"><?php echo $order_res["totalprice"];?></span>
                                                     <a href="delitem.php?order_id=<?php echo $order_res['order_id'];?>&pro_id=<?php echo $order_res['pro_id'];?>&quantity=<?php echo $order_res['quantity'];?>"><input type="button" class="btn btn-warning font-size-12" value='CANCEL ORDER'></a>
