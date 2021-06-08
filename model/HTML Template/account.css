@@ -1,0 +1,23 @@
+
+#account {
+  border-collapse: collapse;
+  width: 90%;
+  margin-left: auto; 
+  margin-right: auto;
+  padding-top: 25px;
+}
+
+#account td, #account th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+
+
+#account th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: orange;
+  color: white;
+}
