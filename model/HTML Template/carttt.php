@@ -93,6 +93,7 @@ if ($_SESSION["count"]==0)
   </tr>
 <?php
 $cost=0;
+$tax=0;
 while($row = mysqli_fetch_array($result))
 {
 ?>
@@ -128,15 +129,22 @@ if(isset($_POST["update"])){
      </a>
     </td>
   </tr>
-  <?php $cost=$cost + ($row['quantity']*$row['pro_price']); ?>
+  <?php 
+  $price=$row['quantity']*$row['pro_price'];
+  $cost=$cost + ($row['quantity']*$row['pro_price']); 
+  $tax=$tax+0.1*$price;?>
 <?php
 }
 ?>
 </table>
 <?php
-echo "<b>TOTAL COST:</b> "?><b> <?php echo $cost;?></b>
+echo "TAX: ".$tax;?>
+<br>
 <?php
-$_SESSION['pro_price']=$cost;
+$total=$cost+$tax;
+echo "<b>TOTAL COST:</b> "?><b> <?php echo $total;?></b>
+<?php
+$_SESSION["pro_price"]=$total;
 ?>
 <div style="float:right;">
 <form action="myord.php" method='post'>
